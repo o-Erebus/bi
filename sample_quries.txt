@@ -1,0 +1,33 @@
+Summarize
+
+
+Summary = SUMMARIZE(sales,sales[Branchname],sales[Branch_code],"Total sales by branch",Sumx(sales,sales[Sales]))
+
+Summary = SUMMARIZE(Sheet1,Sheet1[Department],"Average cost per dept",AVERAGEX(Sheet1,Sheet1[Cost]))
+
+
+Group by:
+
+Sales by Branchname = GROUPBY('sales','sales'[Sales],sales[Branchname],"COUNT OF Employess",COUNTX(CURRENTGROUP(),COUNT(sales[Emp_ID])))
+
+Group = GROUPBY(sales,sales[Branchname],"Total sales by branch",AVERAGEX(CURRENTGROUP(),sales[Sales]))
+
+Group1 = GROUPBY(Sheet1,Sheet1[Department],"count of doctors",COUNTX(CURRENTGROUP(),COUNT(Sheet1[DoctorAssigned])))
+
+
+ALL
+Total Cost all = 
+CALCULATE(
+    SUM(Sheet1[Cost]),
+    ALL(Sheet1)
+)
+
+
+EXCEPT ALL
+
+Total cost ignore gender = 
+CALCULATE(
+    SUM(Sheet1[Cost]),
+    ALLEXCEPT(Sheet1,Sheet1[Gender]
+))
+
